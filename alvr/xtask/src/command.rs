@@ -131,7 +131,7 @@ pub fn unzip(source: &Path, destination: &Path) -> Result<(), Box<dyn Error>> {
 pub fn download(url: &str, destination: &Path) -> Result<(), Box<dyn Error>> {
     run_without_shell(
         "curl",
-        &["-L", "-o", &destination.to_string_lossy(), "--url", url],
+        &["-x", "socks5://127.0.0.1:10808", "-L", "-o", &destination.to_string_lossy(), "--url", url],
     )
 }
 
